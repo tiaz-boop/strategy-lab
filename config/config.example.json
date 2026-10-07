@@ -1,0 +1,21 @@
+{
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "BNBUSDT",
+    "XRPUSDT"
+  ],
+  "intervals": [
+    "5m",
+    "15m",
+    "1h"
+  ],
+  "bars": 1000,
+  "workers": 2,
+  "experiment_batch": 25,
+  "initial_balance": 10000.0,
+  "fee_rate": 0.001,
+  "slippage_rate": 0.0005,
+  "max_drawdown_for_elite": 0.3
+}

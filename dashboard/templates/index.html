@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Strategy Lab V0.5</title>
+<style>body{font-family:Arial;max-width:1100px;margin:30px auto;padding:0 20px}
+.card{padding:15px;border:1px solid #ddd;border-radius:10px;margin:10px 0}
+table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #ddd;text-align:left}
+</style></head>
+<body><h1>Strategy Lab V0.5</h1><div id="queue" class="card">Loading...</div>
+<h2>Top Strategies</h2><table><thead><tr><th>ID</th><th>Score</th><th>Test Return</th><th>PF</th><th>DD</th><th>Lifecycle</th></tr></thead>
+<tbody id="rows"></tbody></table>
+<script>
+async function load(){const x=await fetch('/api/status').then(r=>r.json());
+document.getElementById('queue').textContent=x.queue.map(q=>q.status+': '+q.n).join(' | ');
+document.getElementById('rows').innerHTML=x.top.map(r=>`<tr><td>${r.id}</td><td>${Number(r.score).toFixed(1)}</td><td>${(r.test_return*100).toFixed(2)}%</td><td>${Number(r.profit_factor).toFixed(2)}</td><td>${(r.max_drawdown*100).toFixed(2)}%</td><td>${r.lifecycle}</td></tr>`).join('')}
+load();setInterval(load,5000);
+</script></body></html>
